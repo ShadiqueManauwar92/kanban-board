@@ -1,9 +1,9 @@
 <div class="bg-gray-50 rounded-lg p-4 min-w-80 border-t-4"
-     [ngClass]="getColumnColor()">
-  <div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-bold text-gray-800">{{ column.title }}</h2>
-    <span class="bg-gray-200 text-gray-700 rounded-full px-3 py-1 text-sm font-semibold">
-      {{ column.tasks.length }}
+  [ngClass]="getColumnColor()">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+    <h2 class="text-lg sm:text-xl font-bold text-gray-800 text-center sm:text-left">{{ column.title }}</h2>
+    <span class="bg-gray-200 text-gray-700 rounded-full px-3 py-1 text-sm font-semibold mt-2 sm:mt-0">
+   {{ column.tasks.length }}
     </span>
   </div>
 
@@ -13,18 +13,18 @@
     [cdkDropListData]="column.tasks"
     [cdkDropListConnectedTo]="connectedTo"
     (cdkDropListDropped)="drop($event)"
-    class="min-h-96 space-y-3"
+    class="min-h-64 sm:min-h-96 space-y-3"
   >
     <div *ngFor="let task of column.tasks" cdkDrag>
-      <app-task-card
-        [task]="task"
-        (delete)="deleteTask(task.id)"
-      />
+   <app-task-card
+     [task]="task"
+     (delete)="deleteTask(task.id)"
+   />
     </div>
 
     <div *ngIf="column.tasks.length === 0" 
-         class="text-center text-gray-400 py-8 border-2 border-dashed border-gray-300 rounded-lg">
-      Drop tasks here
+      class="text-center text-gray-400 py-8 border-2 border-dashed border-gray-300 rounded-lg">
+   Drop tasks here
     </div>
   </div>
 </div>
