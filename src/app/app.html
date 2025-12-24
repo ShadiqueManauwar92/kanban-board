@@ -1,12 +1,13 @@
 <div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-200 py-8 px-4">
   <div class="max-w-7xl mx-auto">
+    <!-- Header Section -->
     <header class="mb-8">
-      <div class="flex items-center justify-between">
+      <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 class="text-4xl font-bold text-gray-800 mb-2">Kanban Board</h1>
           <p class="text-gray-600">Drag and drop tasks to manage your workflow</p>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-4">
           <div class="bg-white px-4 py-2 rounded-lg shadow">
             <span class="text-gray-600">Total Tasks: </span>
             <span class="font-bold text-blue-600">{{ totalTasks() }}</span>
@@ -24,17 +25,20 @@
       </div>
     </header>
 
-    <div class="flex gap-6 overflow-x-auto pb-4">
+    <!-- Kanban Columns Section -->
+    <div class="flex flex-wrap gap-6 overflow-x-auto pb-4">
       <app-kanban-column
         *ngFor="let column of columns()"
         [column]="column"
         [connectedTo]="connectedTo()"
-      />
+        class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3"
+      ></app-kanban-column>
     </div>
   </div>
 </div>
 
+<!-- Add Task Modal -->
 <app-add-task-modal
   *ngIf="showModal"
   (close)="closeModal()"
-/>
+></app-add-task-modal>
