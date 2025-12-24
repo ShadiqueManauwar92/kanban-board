@@ -87,7 +87,7 @@ kanban-board/
 │   │   ├── app.component.ts
 │   │   ├── app.component.html
 │   │   ├── app.config.ts
-│   │   └── app.routes.ts
+│   │   └── app.routes.server.ts
 │   ├── main.ts
 │   └── index.html
 ├── package.json
